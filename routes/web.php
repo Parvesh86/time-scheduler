@@ -19,4 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function () 
+{
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    // Route for Creating Scheduled Event
+    Route::post('/create-event',[App\Http\Controller\SchedularController::class, 'CreateEvent'])->name('schedule.event');
+});

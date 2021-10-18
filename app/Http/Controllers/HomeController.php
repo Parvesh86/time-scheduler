@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $week_day_array = $this->GetWeekDayArray();
+        return view('home',compact('week_day_array'));
     }
 }
